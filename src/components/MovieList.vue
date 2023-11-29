@@ -43,36 +43,6 @@ export default{
             </div>
         </div>
 
-        <!-- prove
-        <div class="col">
-            <div class="card">
-                 <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                 <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                 <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                 <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                 <img src="" alt="">
-            </div>
-        </div> -->
     </div>
 </section>
 </template>
