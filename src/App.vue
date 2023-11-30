@@ -1,48 +1,42 @@
 <script>
-import axios from "axios"
-import { store } from './store.js'
+import axios from 'axios'
+import { store } from './store';
 import AppSearchHeader from "./components/AppSearchHeader.vue";
-import MovieList from "./components/MovieList.vue";
+import AppMain from "./components/AppMain.vue"
+
 
 export default {
-    Data() {
+  components: { AppSearchHeader, AppMain},  
+    data() {
         return {
-            store,
-            arrayMovie:[]
+          store,
+            
         };        
     },
-    components: { AppSearchHeader, MovieList },
-    // created(){
-    //   axios
-    //   .get(this.store.apiMovies)
-    //   .then(resp => {
-
-    //   })
-    // },
-
-    created(){
+    methods: {
+      handleSearch() {
       axios
         .get("https://api.themoviedb.org/3/search/movie" , {
           params: {
             api_key: "abe20a1486ed115da66c8e73498dd777",
-           
-        }
-        })
-        .then((resp) => {
-            console.log(resp.data.result);
-          // this.arrayMovie = resp
-      
+            query: this.store.textSearch,   
+           },
+        }) .then((resp) => {
+          this.store.arrayMovie = resp.data.results;
+          // console.log(resp);
         });
-    },
-    
-}
+      },
+      
+    },    
+};
 </script>
 
 <template>
- <AppSearchHeader performSearch="handleSesrch"/>
-<MovieList/>
+ <AppSearchHeader @perform-search="handleSearch()"/>
+ <AppMain/>
 </template>
 
 <style lang="scss">
-@use "./style/general.scss"
-</style>
+@use "./style/general.scss";
+@import "@fortawesome/fontawesome-free/css/all.css";
+</style> 

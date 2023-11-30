@@ -5,7 +5,8 @@ import { store } from "../store"
             return{
                 store
             };
-        }
+        },
+        emits: ["perform-search"]
     }
 </script>
 
@@ -13,8 +14,9 @@ import { store } from "../store"
     <section>
         <h2> BOOLFLIX </h2>
         <div>
-            <input type="text" placeholder="cerca un film" v-model.trim="store.searchText">
-            <button @click="$emit('performSearch')">cerca</button>
+            <label for="search">cerca film</label>
+            <input id="search" type="search" v-model.trim="store.textSearch">
+            <button @click="$emit('perform-search')">cerca</button>
         </div>
     </section>
 
