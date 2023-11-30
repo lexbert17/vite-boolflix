@@ -14,6 +14,7 @@
             getImage(language) {
                 return new URL(`../assets/images/${language}.png` , import.meta.url).href;
             },
+           
         }
 
     }
@@ -24,7 +25,7 @@
     <!-- card movies  -->
 
     <div class="card">
-        <!-- <div class="flex">
+        <div class="flex">
             <h3>Titolo:</h3>
             <p>{{ objMovies.title }}</p>
         </div>    
@@ -41,9 +42,13 @@
 
         <div class="flex">
             <h4>Voto:</h4>
+            <i v-for="i in 5 - Math.ceil(objMovies.vote_average / 2)" class="fa-solid fa-star fa-sm"></i>
+            <i v-for="i in Math.ceil(objMovies.vote_average / 2)" class="fa-regular fa-star fa-sm"></i>
+            
+      
         </div>    
         <p>{{ objMovies.original_language }}</p>
-        <p>{{ objMovies.overview }}</p> -->
+        <p>{{ objMovies.overview }}</p>
 
         <img :src="`${imageSize}objMovies.poster_path`" alt="">
     </div>  
