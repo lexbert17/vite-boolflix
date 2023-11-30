@@ -39,6 +39,8 @@
 
         <div class="flex">
             <h4>Voto:</h4>
+            <i v-for="i in 5 - Math.ceil(objSeries.vote_average / 2)" class="fa-solid fa-star fa-sm"></i>
+            <i v-for="i in Math.ceil(objSeries.vote_average / 2)" class="fa-regular fa-star fa-sm"></i>
         </div>    
         <p>{{ objSeries.original_language }}</p>
         <p>{{ objSeries.overview }}</p>
