@@ -15,6 +15,7 @@ export default {
     },
     methods: {
       handleSearch() {
+
       axios
         .get("https://api.themoviedb.org/3/search/movie" , {
           params: {
@@ -25,6 +26,17 @@ export default {
           this.store.arrayMovie = resp.data.results;
           // console.log(resp);
         });
+
+
+        axios
+      .get("https://api.themoviedb.org/3/search/tv", {
+        params: {
+        api_key: "abe20a1486ed115da66c8e73498dd777",
+        query: this.store.textSearch,
+        },
+      }).then ((resp) => {
+        this.store.arraySeries = resp.data.results
+      })
       },
       
     },    

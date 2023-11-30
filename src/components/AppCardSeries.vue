@@ -1,13 +1,11 @@
 <script>
     export default {
         props: {
-            objMovies: Object,
-          
+            objSeries: Object,
         },
         data() {
             return{
                 flags: ["en", "it", "ja", "ke", "tl", "us"],
-                imageSize: "https://image.tmdb.org/t/p/w342"
             };
         },
         methods: {
@@ -21,32 +19,30 @@
 
 <template>
 
-    <!-- card movies  -->
+    <!-- card series  -->
 
     <div class="card">
-        <!-- <div class="flex">
+        <div class="flex">
             <h3>Titolo:</h3>
-            <p>{{ objMovies.title }}</p>
+            <p>{{ objSeries.name }}</p>
         </div>    
         <div class="flex">
             <h3>Titolo originale:</h3>
-            <p>{{ objMovies.original_title }}</p>
+            <p>{{ objSeries.original_name }}</p>
         </div>
 
         <div class="flex">
             <h4>Lingua:</h4>
-            <img v-if="flags.includes(objMovies.original_language)" :src="getImage(objMovies.original_language)" alt="objMovies.title">
-            <p v-else>{{ objMovies.original_language }}</p>
+            <img v-if="flags.includes(objSeries.original_language)" :src="getImage(objSeries.original_language)" alt="objSeries.name">
+            <p v-else>{{ objSeries.original_language }}</p>
         </div>  
 
         <div class="flex">
             <h4>Voto:</h4>
         </div>    
-        <p>{{ objMovies.original_language }}</p>
-        <p>{{ objMovies.overview }}</p> -->
-
-        <img :src="`${imageSize}objMovies.poster_path`" alt="">
-    </div>  
+        <p>{{ objSeries.original_language }}</p>
+        <p>{{ objSeries.overview }}</p>
+    </div>
     
     
 </template>
