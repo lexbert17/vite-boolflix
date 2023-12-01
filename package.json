@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource-variable/dosis": "^5.0.17",
+    "@fontsource/fira-sans": "^5.0.17",
     "@fortawesome/fontawesome-free": "^6.5.0",
     "axios": "^1.6.2",
     "vue": "^3.3.8"

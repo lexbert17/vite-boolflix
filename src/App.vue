@@ -16,6 +16,7 @@ export default {
         };        
     },
     methods: {
+
       handleSearch() {
         this.store.isLoading = true
       axios
@@ -45,8 +46,16 @@ export default {
       } 
       
     }, 
-    computed:{
-    
+    mounted(){
+      axios
+      .get(`${this.store.baseApiUrl}/movie/top_rated`, {
+        params: {
+        api_key: "abe20a1486ed115da66c8e73498dd777",
+        },
+      }).then ((resp) => {
+        this.store.topMovies = resp.data.results
+      
+      })
     } 
      
 };
