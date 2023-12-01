@@ -1,67 +1,73 @@
 <script>
     export default {
         props: {
-            objSeries: Object,
+            objMovies: Object,
+          
         },
         data() {
             return{
                 flags: ["en", "it", "ja", "ke", "tl", "us"],
+                imageSize: "https://image.tmdb.org/t/p/w342"
             };
         },
         methods: {
             getImage(language) {
                 return new URL(`../assets/images/${language}.png` , import.meta.url).href;
             },
-        }
-
+           
+        },
     }
 </script>
 
 <template>
 
-    <!-- card series  -->
-
+    <!-- card movies  -->
+   
     <div class="card">
 
         <div class="bg-image">
-            <img v-if="objSeries.poster_path" :src="`https://image.tmdb.org/t/p/w342${objSeries.poster_path}`" alt="">
+            <img v-if="objMovies.poster_path" :src="`https://image.tmdb.org/t/p/w342${objMovies.poster_path}`" alt="">
             <img  class="no-img" v-else src="../assets/images/No-Image.png" alt="">
-            <div><h2>SERIE</h2></div>
+            <div><h2>FILM</h2></div>
         </div>
+
         <div class="details">
             <div class="flex">
                 <h3>Titolo:</h3>
-                <p>{{ objSeries.name }}</p>
+                <p>{{ objMovies.title }}</p>
             </div>    
             <div class="flex">
                 <h3>Titolo originale:</h3>
-                <p>{{ objSeries.original_name }}</p>
+                <p>{{ objMovies.original_title }}</p>
             </div>
 
             <div class="flex">
                 <h4>Lingua:</h4>
-                <img v-if="flags.includes(objSeries.original_language)" :src="getImage(objSeries.original_language)" alt="objSeries.name">
-                <p v-else>{{ objSeries.original_language }}</p>
+                <img v-if="flags.includes(objMovies.original_language)" :src="getImage(objMovies.original_language)" alt="objMovies.title">
+                <p v-else>{{ objMovies.original_language }}</p>
             </div>  
 
             <div class="flex">
                 <h4>Voto:</h4>
-                <i v-for="i in 5 - Math.ceil(objSeries.vote_average / 2)" class="fa-solid fa-star fa-sm"></i>
-                <i v-for="i in Math.ceil(objSeries.vote_average / 2)" class="fa-regular fa-star fa-sm"></i>
+                <i v-for="i in 5 - Math.ceil(objMovies.vote_average / 2)" class="fa-solid fa-star fa-sm"></i>
+                <i v-for="i in Math.ceil(objMovies.vote_average / 2)" class="fa-regular fa-star fa-sm"></i>
             </div>    
-            
-            <div class="flex">
-                    <h3>Lingua:</h3>
-                    <p>{{ objSeries.original_language }}</p>
-                </div>
 
-                <div >
-                    <h3>Trama:</h3>
-                    <p v-if="objSeries.overview">{{ objSeries.overview }}</p>
-                    <p v-else> ...</p>
-                </div>  
+            <div class="flex">
+                <h3>Lingua:</h3>
+                <p>{{ objMovies.original_language }}</p>
+            </div>
+
+            <div >
+                <h3>Trama:</h3>
+                <p v-if="objMovies.overview">{{ objMovies.overview }}</p>
+                <p v-else> ...</p>
+            </div>    
         </div>
-    </div>
+
+        
+    </div>  
+    
     
     
 </template>

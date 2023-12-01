@@ -1,6 +1,6 @@
 <script>
 import { store } from "../store";
-import AppCard from "./AppCard.vue";
+import AppCard from "./AppCardMovie.vue";
 import AppCardSeries from "./AppCardSeries.vue";
 export default{
     data() {
@@ -14,36 +14,46 @@ export default{
 
 <template>
 <section>
+    
     <div class="row">
         <!-- movies  -->
-        <div class="col" v-for="movie in store.arrayMovie">
-            <AppCard :objMovies = "movie" />
+        <div  class="col" v-for="movie in store.arrayMovie">
+            <AppCard :objMovies = "movie"/>
         </div> 
-
+    </div>    
         <!-- series  -->
-        <div class="col" v-for="series in store.arraySeries">
-            <AppCardSeries :objSeries="series" />
-        </div> 
-    </div>   
+        
+            <div class="row">
+                <div class="col" v-for="series in store.arraySeries">
+                    <AppCardSeries :objSeries="series" />
+                </div> 
+            </div>
 </section>
 </template>
 
 <style  lang="scss" scoped>
 section{
     margin-top: 3rem;
+    background-color: #141414;
    
+    h2{
+        color: white;
+        font-size: 3rem;
 
+    }
     .row{
         display: flex;
-        justify-content: space-around;
+        justify-content: baseline;
         gap: 2rem;
         flex-wrap: wrap;
-        background-color: yellow;
+        
         
 
         .col{
             display: flex;
             align-self: center;
+           
+            
         }
     }    
 }
