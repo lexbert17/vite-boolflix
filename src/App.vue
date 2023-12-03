@@ -4,10 +4,11 @@ import { store } from './store';
 import AppSearchHeader from "./components/AppSearchHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import TopMovies from './components/TopMovies.vue';
+import TopSeries from './components/TopSeries.vue';
 
 
 export default {
-  components: { AppSearchHeader, AppMain, TopMovies },  
+  components: { AppSearchHeader, AppMain, TopMovies, TopSeries },  
     data() {
         return {
           store,
@@ -18,7 +19,10 @@ export default {
     methods: {
 
       handleSearch() {
-        this.store.isLoading = true
+        this.store.topMovies = [],
+        this.store.topSeries =[],
+        this.store.showFilm = "",
+        this.store.showSeries = "",
       axios
         .get(`${this.store.baseApiUrl}/search/movie` , {
           params: {
@@ -55,17 +59,31 @@ export default {
       }).then ((resp) => {
         this.store.topMovies = resp.data.results
       
+      });
+
+      axios
+      .get(`${this.store.baseApiUrl}/tv/on_the_air`, {
+        params: {
+        api_key: "abe20a1486ed115da66c8e73498dd777",
+        },
+      }).then ((resp) => {
+        this.store.topSeries = resp.data.results
+      
       })
+
+
     } 
      
 };
 </script>
 
 <template>
-  
  <AppSearchHeader @perform-search="handleSearch()"/>
+  <AppMain/>
+
  <TopMovies/>
- <div><AppMain/></div>
+ <TopSeries/>
+ 
  
  
 </template>
@@ -74,4 +92,7 @@ export default {
 @use "./style/general.scss";
 @import "@fortawesome/fontawesome-free/css/all.css";
 
+.none{
+display: none;
+}
 </style> 

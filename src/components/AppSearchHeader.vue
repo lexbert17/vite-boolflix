@@ -31,7 +31,7 @@ import { store } from "../store"
 section{
     height: 100px;
     display: flex;
-    background-color:orange;
+    background-color: #141414;
     justify-content: space-around;
     align-items: center;
     h2{
